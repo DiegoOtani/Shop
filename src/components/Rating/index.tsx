@@ -12,8 +12,9 @@ const Rating: React.FC<RatingProps> = ({ rating }) => {
     }
   }
 
-  return <div className="flex gap-1">
-    {stars}
+  return <div className="flex gap-1 items-center text-sm">
+    {stars} 
+    <span>{rating}/5</span>
   </div>
 }
 
