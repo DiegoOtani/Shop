@@ -1,7 +1,7 @@
 import { RatingProps } from "./types";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
-const Rating: React.FC<RatingProps> = ({ rating }) => {
+const Rating: React.FC<RatingProps> = ({ rating, showValue }) => {
   const stars = [];
 
   for (let i = 0; i < 5; i++) {
@@ -14,7 +14,7 @@ const Rating: React.FC<RatingProps> = ({ rating }) => {
 
   return <div className="flex gap-1 items-center text-sm">
     {stars} 
-    <span>{rating}/5</span>
+    {showValue && <span>{rating}/5</span>}
   </div>
 }
 
