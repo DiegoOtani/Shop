@@ -8,7 +8,6 @@ const Review: React.FC<ReviewProps> = ({ rating, name, comment, postedOn }) => {
     <span className="text-xl font-bold flex items-center gap-2 max-sm:text-base">{name}<FaCircleCheck color="green"/></span>
     <p className="text-base text-black text-opacity-60 max-sm:text-sm">&quot;{comment}&quot;</p>
     {postedOn && <p className="font-medium text-base text-black text-opacity-60 max-sm:text-sm">Posted on {postedOn}</p>}
-    
   </div>
 }
 
