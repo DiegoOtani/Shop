@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
+      setIsSmallScreen(window.innerWidth < 780);
     };
 
     handleResize();
@@ -108,7 +108,7 @@ const Header = () => {
           </div>
         </div>
       )}
-      
+
   </header>
 }
 
