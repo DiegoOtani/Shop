@@ -12,6 +12,7 @@ const Header = () => {
   const [search, setSearch] = useState<string>('');
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,45 +33,55 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  return <header className="w-full px-12 py-8 max-md:px-5 max-md:py-5 flex items-center justify-between gap-10 border-b-black border-2">
+  return <header className="w-full px-12 py-8 max-md:px-5 max-md:py-5 flex flex-col gap-4 border-b-black border-2">
+    <div className="flex items-center justify-between gap-10">
+      <div className="flex items-center gap-6 max-md:gap-3">
+        {isSmallScreen && 
+          <button onClick={handleOpenMenu}>
+            <IoMenu size={24}/>
+          </button>
+        }
+        
+        <Link href={'/'} className="text-4xl max-md:text-2xl font-bold">
+          SHOP.CO
+        </Link>
+      </div>
 
-    <div className="flex items-center gap-6 max-md:gap-3">
-      {isSmallScreen && 
-        <button onClick={handleOpenMenu}>
-          <IoMenu size={24}/>
-        </button>
+      {!isSmallScreen && <>
+          <nav className="hidden sm:block">
+            <ul className="flex gap-6">
+              <NavItem href="#" text="Shop" key="Shop"/>
+              <NavItem href="#" text="On Sale" key="On Sale"/>
+              <NavItem href="#" text="New Arrivals" key="New Arrivals"/>
+              <NavItem href="#" text="Brands" key="Brands"/>
+            </ul>
+          </nav>
+          <Input 
+            icon={IoIosSearch} 
+            placeholder="Search for products..." 
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            onSearch={() => console.log(search)}
+          />
+        </>
       }
-      
-      <Link href={'/'} className="text-4xl max-md:text-2xl font-bold">
-        SHOP.CO
-      </Link>
+
+      <div className="flex gap-6 max-md:gap-3">
+        {isSmallScreen && <NavButton icon={IoIosSearch} onClick={() => setIsSearchOpen((prev) => !prev)} key="search button"/>}
+        <NavButton icon={FiShoppingCart} onClick={() => console.log("Market cart button")} key="cart button"/>
+        <NavButton icon={BsPersonCircle} onClick={() => console.log("Personal account button")} key="Personal account button"/>
+      </div>
     </div>
 
-    {!isSmallScreen && <>
-        <nav className="hidden sm:block">
-          <ul className="flex gap-6">
-            <NavItem href="#" text="Shop" key="Shop"/>
-            <NavItem href="#" text="On Sale" key="On Sale"/>
-            <NavItem href="#" text="New Arrivals" key="New Arrivals"/>
-            <NavItem href="#" text="Brands" key="Brands"/>
-          </ul>
-        </nav>
-        <Input 
-          icon={IoIosSearch} 
-          placeholder="Search for products..." 
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-          onSearch={() => console.log(search)}
-        />
-      </>
+    {isSearchOpen && <Input 
+        icon={IoIosSearch} 
+        placeholder="Search for products..." 
+        onChange={(e) => setSearch(e.target.value)}
+        value={search}
+        onSearch={() => console.log(search)}
+      />
     }
-
-    <div className="flex gap-6 max-md:gap-3">
-      {isSmallScreen && <NavButton icon={IoIosSearch} onClick={() => setIsSmallScreen(true)} key="search button"/>}
-      <NavButton icon={FiShoppingCart} onClick={() => console.log("Market cart button")} key="cart button"/>
-      <NavButton icon={BsPersonCircle} onClick={() => console.log("Personal account button")} key="Personal account button"/>
-    </div>
-
+    
     {isMenuOpen && (
         <div
           className="fixed inset-0 z-50 flex"
@@ -97,6 +108,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      
   </header>
 }
 
