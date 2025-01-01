@@ -1,12 +1,12 @@
 import Link from "next/link";
-import NavItem from "../NavItem";
+import NavItem from "./components/NavItem";
 import Input from "../Input";
 import { IoIosSearch } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoMenu } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import NavButton from "../NavButton";
+import NavButton from "./components/NavButton";
 
 const Header = () => {
   const [search, setSearch] = useState<string>('');
