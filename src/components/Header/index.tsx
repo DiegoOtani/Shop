@@ -23,9 +23,9 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <header className="w-full px-24 py-10 max-md:px-12 max-md:py-5 flex items-center justify-between gap-10 border-b-black border-2">
+  return <header className="w-full px-12 py-8 max-md:px-5 max-md:py-5 flex items-center justify-between gap-10 border-b-black border-2">
 
-    <div className="flex items-center gap-6">
+    <div className="flex items-center gap-6 max-md:gap-3">
       {isSmallScreen && 
         <button>
           <IoMenu size={24}/>
@@ -56,7 +56,7 @@ const Header = () => {
       </>
     }
 
-    <div className="flex gap-6">
+    <div className="flex gap-6 max-md:gap-3">
       {isSmallScreen && <NavButton icon={IoIosSearch} onClick={() => setIsSmallScreen(true)} key="search button"/>}
       <NavButton icon={FiShoppingCart} onClick={() => console.log("Market cart button")} key="cart button"/>
       <NavButton icon={BsPersonCircle} onClick={() => console.log("Personal account button")} key="Personal account button"/>
