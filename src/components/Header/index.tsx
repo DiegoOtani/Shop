@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import NavItem from "./components/NavItem";
 import Input from "../Input";
